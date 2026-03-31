@@ -1,0 +1,25 @@
+[Unit]
+Description=nginx-waf REST API
+Documentation=https://github.com/RumenDamyanov/nginx-waf-api
+After=network-online.target nginx.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nginx-waf-api
+Group=nginx-waf-api
+ExecStart=/usr/bin/nginx-waf-api -config /etc/nginx-waf-api/config.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+# Security hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/etc/nginx/waf-lists
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

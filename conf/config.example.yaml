@@ -1,0 +1,33 @@
+# nginx-waf-api configuration
+# Copy to /etc/nginx-waf-api/config.yaml and adjust
+
+server:
+  listen: ":8080"
+  # TLS (optional)
+  # tls:
+  #   cert: /etc/nginx-waf-api/cert.pem
+  #   key: /etc/nginx-waf-api/key.pem
+
+auth:
+  # API key authentication
+  api_keys:
+    - name: admin
+      key: ${NGINX_WAF_API_KEY}
+      permissions: [read, write]
+
+nginx:
+  # Directory containing IP list files
+  lists_dir: /etc/nginx/waf-lists
+  # Command to reload nginx (empty to disable)
+  reload_command: "systemctl reload nginx"
+  # Debounce reload (seconds) - batch rapid changes
+  reload_debounce: 5
+
+logging:
+  level: info
+  format: text  # text or json
+
+# Metrics endpoint (optional)
+metrics:
+  enabled: false
+  listen: ":9102"
