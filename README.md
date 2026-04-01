@@ -2,14 +2,12 @@
 
 REST API daemon for dynamic control of nginx-waf module.
 
-> **PLANNED PROJECT** - This project is scaffolded and ready for implementation.
-
 ## Overview
 
 nginx-waf-api is a standalone Go daemon that provides a REST API for dynamically
 managing nginx-waf IP lists without manual file editing or nginx configuration changes.
 
-## Features (Planned)
+## Features
 
 - REST API for IP list management (CRUD operations)
 - API key authentication
@@ -25,7 +23,7 @@ API Client ──> nginx-waf-api ──> IP List Files ──> nginx-waf
  (UI/CLI)     (Go daemon)     (/etc/nginx/...)    (C module)
 ```
 
-## API Endpoints (Planned)
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -70,10 +68,18 @@ sudo systemctl enable --now nginx-waf-api
 
 ## Related Projects
 
+### nginx-waf Ecosystem
+
 - [nginx-waf](https://github.com/RumenDamyanov/nginx-waf) - Core nginx module (required)
 - [nginx-waf-feeds](https://github.com/RumenDamyanov/nginx-waf-feeds) - Threat feed updater
 - [nginx-waf-lua](https://github.com/RumenDamyanov/nginx-waf-lua) - OpenResty Lua integration
 - [nginx-waf-ui](https://github.com/RumenDamyanov/nginx-waf-ui) - Web management interface
+
+### Other Nginx Modules
+
+- [nginx-torblocker](https://github.com/RumenDamyanov/nginx-torblocker) - Control access from Tor exit nodes
+- [nginx-cf-realip](https://github.com/RumenDamyanov/nginx-cf-realip) - Automatic Cloudflare IP list fetcher for real client IP restoration
+- [nginx-gone](https://github.com/RumenDamyanov/nginx-gone) - Return HTTP 410 Gone for permanently removed URIs
 
 ## License
 
