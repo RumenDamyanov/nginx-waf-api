@@ -5,16 +5,16 @@ permissions:
 
 on:
   push:
-    branches: [master, main, develop]
+    branches: [master, develop]
   pull_request:
-    branches: [master, main, develop]
+    branches: [master, develop]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ['1.21', '1.22']
+        go-version: ['1.22']
 
     steps:
       - name: Checkout code
